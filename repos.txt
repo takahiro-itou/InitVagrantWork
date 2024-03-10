@@ -1,0 +1,188 @@
+----------------------------------------------------------
+/ext-hdd/data/program/CI-Sample1
+github	git@github.com:takahiro-itou/CI-Sample1.git (fetch)
+github	git@github.com:takahiro-itou/CI-Sample1.git (push)
+origin	git@gitlab.com:takahiro-itou/CI-Sample1.git (fetch)
+origin	git@gitlab.com:takahiro-itou/CI-Sample1.git (push)
+
+.hg/hgrc
+----------------------------------------------------------
+/ext-hdd/data/program/CalcOdsWriter
+github	git@github.com:takahiro-itou/CalcOdsWriter.git (fetch)
+github	git@github.com:takahiro-itou/CalcOdsWriter.git (push)
+origin	git@gitlab.com:takahiro-itou/CalcOdsWriter.git (fetch)
+origin	git@gitlab.com:takahiro-itou/CalcOdsWriter.git (push)
+
+.hg/hgrc
+----------------------------------------------------------
+/ext-hdd/data/program/Csv2ColorOds
+github	git@github.com:takahiro-itou/Csv2ColorOds.git (fetch)
+github	git@github.com:takahiro-itou/Csv2ColorOds.git (push)
+origin	git@gitlab.com:takahiro-itou/Csv2ColorOds.git (fetch)
+origin	git@gitlab.com:takahiro-itou/Csv2ColorOds.git (push)
+
+.hg/hgrc
+----------------------------------------------------------
+/ext-hdd/data/program/DocViewTemplate
+bit	git@bitbucket.org:takahiro_itou/DocViewTemplate.git (fetch)
+bit	git@bitbucket.org:takahiro_itou/DocViewTemplate.git (push)
+github	git@github.com:takahiro-itou/DocViewTemplate.git (fetch)
+github	git@github.com:takahiro-itou/DocViewTemplate.git (push)
+origin	git@gitlab.com:takahiro-itou/docviewtemplate.git (fetch)
+origin	git@gitlab.com:takahiro-itou/docviewtemplate.git (push)
+
+.hg/hgrc
+# example repository config (see 'hg help config' for more info)
+[paths]
+default = ssh://hgvagrant/DocViewTemplate
+
+# path aliases to other clones of this repo in URLs or filesystem paths
+# (see 'hg help config.paths' for more info)
+#
+# default:pushurl = ssh://jdoe@example.net/hg/jdoes-fork
+# my-fork         = ssh://jdoe@example.net/hg/jdoes-fork
+# my-clone        = /home/jdoe/jdoes-clone
+
+[ui]
+# name and email (local to this repository, optional), e.g.
+# username = Jane Doe <jdoe@example.com>
+----------------------------------------------------------
+/ext-hdd/data/program/HouseholdAccounts
+github	git@github.com:takahiro-itou/HouseholdAccounts.git (fetch)
+github	git@github.com:takahiro-itou/HouseholdAccounts.git (push)
+origin	git@gitlab.com:takahiro-itou/HouseholdAccounts.git (fetch)
+origin	git@gitlab.com:takahiro-itou/HouseholdAccounts.git (push)
+
+.hg/hgrc
+# example repository config (see 'hg help config' for more info)
+[paths]
+default = ssh://hgvagrant/HouseholdAccounts
+
+# path aliases to other clones of this repo in URLs or filesystem paths
+# (see 'hg help config.paths' for more info)
+#
+# default:pushurl = ssh://jdoe@example.net/hg/jdoes-fork
+# my-fork         = ssh://jdoe@example.net/hg/jdoes-fork
+# my-clone        = /home/jdoe/jdoes-clone
+
+[ui]
+# name and email (local to this repository, optional), e.g.
+# username = Jane Doe <jdoe@example.com>
+----------------------------------------------------------
+/ext-hdd/data/program/InitCMake
+github	git@github.com:takahiro-itou/InitCMake.git (fetch)
+github	git@github.com:takahiro-itou/InitCMake.git (push)
+origin	git@gitlab.com:takahiro-itou/InitCMake.git (fetch)
+origin	git@gitlab.com:takahiro-itou/InitCMake.git (push)
+
+.hg/hgrc
+----------------------------------------------------------
+/ext-hdd/data/program/InitM4
+github	git@github.com:takahiro-itou/InitM4.git (fetch)
+github	git@github.com:takahiro-itou/InitM4.git (push)
+origin	git@gitlab.com:takahiro-itou/InitM4.git (fetch)
+origin	git@gitlab.com:takahiro-itou/InitM4.git (push)
+
+.hg/hgrc
+----------------------------------------------------------
+/ext-hdd/data/program/PedometerCalc
+github	git@github.com:takahiro-itou/PedometerCalc.git (fetch)
+github	git@github.com:takahiro-itou/PedometerCalc.git (push)
+origin	git@gitlab.com:takahiro-itou/PedometerCalc.git (fetch)
+origin	git@gitlab.com:takahiro-itou/PedometerCalc.git (push)
+
+.hg/hgrc
+----------------------------------------------------------
+/ext-hdd/data/program/Picross
+github	git@github.com:takahiro-itou/Picross.git (fetch)
+github	git@github.com:takahiro-itou/Picross.git (push)
+origin	git@gitlab.com:takahiro-itou/Picross.git (fetch)
+origin	git@gitlab.com:takahiro-itou/Picross.git (push)
+
+.hg/hgrc
+----------------------------------------------------------
+/ext-hdd/data/program/Score4
+bit	git@bitbucket.org:takahiro_itou/Score4.git (fetch)
+bit	git@bitbucket.org:takahiro_itou/Score4.git (push)
+github	git@github.com:takahiro-itou/Score4.git (fetch)
+github	git@github.com:takahiro-itou/Score4.git (push)
+origin	git@gitlab.com:takahiro-itou/Score4.git (fetch)
+origin	git@gitlab.com:takahiro-itou/Score4.git (push)
+
+.hg/hgrc
+# example repository config (see 'hg help config' for more info)
+[paths]
+default = ssh://hgvagrant/Score4
+
+# path aliases to other clones of this repo in URLs or filesystem paths
+# (see 'hg help config.paths' for more info)
+#
+# default:pushurl = ssh://jdoe@example.net/hg/jdoes-fork
+# my-fork         = ssh://jdoe@example.net/hg/jdoes-fork
+# my-clone        = /home/jdoe/jdoes-clone
+
+[ui]
+# name and email (local to this repository, optional), e.g.
+# username = Jane Doe <jdoe@example.com>
+----------------------------------------------------------
+/ext-hdd/data/program/Settings
+bit	git@bitbucket.org:takahiro_itou/Settings.git (fetch)
+bit	git@bitbucket.org:takahiro_itou/Settings.git (push)
+github	git@github.com:takahiro-itou/Settings.git (fetch)
+github	git@github.com:takahiro-itou/Settings.git (push)
+origin	git@gitlab.com:takahiro-itou/Settings.git (fetch)
+origin	git@gitlab.com:takahiro-itou/Settings.git (push)
+
+.hg/hgrc
+# example repository config (see 'hg help config' for more info)
+[paths]
+default = ssh://hgvagrant/Settings
+
+# path aliases to other clones of this repo in URLs or filesystem paths
+# (see 'hg help config.paths' for more info)
+#
+# default:pushurl = ssh://jdoe@example.net/hg/jdoes-fork
+# my-fork         = ssh://jdoe@example.net/hg/jdoes-fork
+# my-clone        = /home/jdoe/jdoes-clone
+
+[ui]
+# name and email (local to this repository, optional), e.g.
+# username = Jane Doe <jdoe@example.com>
+----------------------------------------------------------
+/ext-hdd/data/program/SubModuleTestMain
+origin	git@gitlab.com:takahiro-itou/SubModuleTestMain.git (fetch)
+origin	git@gitlab.com:takahiro-itou/SubModuleTestMain.git (push)
+
+.hg/hgrc
+----------------------------------------------------------
+/ext-hdd/data/program/ToyCode
+github	git@github.com:takahiro-itou/ToyCode.git (fetch)
+github	git@github.com:takahiro-itou/ToyCode.git (push)
+origin	git@gitlab.com:takahiro-itou/ToyCode.git (fetch)
+origin	git@gitlab.com:takahiro-itou/ToyCode.git (push)
+
+.hg/hgrc
+----------------------------------------------------------
+/ext-hdd/data/program/gnupg
+
+.hg/hgrc
+# example repository config (see 'hg help config' for more info)
+[paths]
+default = ssh://hgvagrant/gnupg
+
+# path aliases to other clones of this repo in URLs or filesystem paths
+# (see 'hg help config.paths' for more info)
+#
+# default:pushurl = ssh://jdoe@example.net/hg/jdoes-fork
+# my-fork         = ssh://jdoe@example.net/hg/jdoes-fork
+# my-clone        = /home/jdoe/jdoes-clone
+
+[ui]
+# name and email (local to this repository, optional), e.g.
+# username = Jane Doe <jdoe@example.com>
+----------------------------------------------------------
+/ext-hdd/data/program/python-class-test
+origin	git@gitlab.com:takahiro-itou/python-class-test.git (fetch)
+origin	git@gitlab.com:takahiro-itou/python-class-test.git (push)
+
+.hg/hgrc
