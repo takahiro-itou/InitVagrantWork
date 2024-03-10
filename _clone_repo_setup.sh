@@ -17,7 +17,7 @@ if [[ "X${hg_repo_name}Y" != 'X-Y' ]] ; then
 elif [[ "X${git_repo_name}Y" != 'X-Y' ]] ; then
     repo_name="${git_repo_name}"
     git_url="${gitlab_url_base}/${repo_name}.git"
-    git clone --recursive "{git_url}"
+    git clone --recursive "${git_url}"
 else
     echo "FATAL : No repository name was given!"  1>&2
     exit  2
