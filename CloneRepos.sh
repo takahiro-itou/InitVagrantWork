@@ -9,3 +9,11 @@ for repo in  \
 ; do
     /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" "${repo}"
 done
+
+##  Only GIT Repository
+
+for repo in  \
+        CI-Sample1          \
+; do
+    /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" '-' "${repo}"
+done
