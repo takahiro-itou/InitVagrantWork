@@ -6,6 +6,7 @@ git_repo_grp=${3:-''}
 
 gitlab_url_base='git@gitlab.com:takahiro-itou'
 github_url_base='git@github.com:takahiro-itou'
+bitbucket_url_base="git@bitbucket.org:takahiro_itou"
 
 if [[ "X${hg_repo_name}Y" != 'X-Y' ]] ; then
     repo_name="${hg_repo_name}"
@@ -29,6 +30,7 @@ fi
 
 pushd "${repo_name}"
 git remote add github "${github_url_base}/${repo_name}.git"
+# git remote add bit "${bitbucket_url_base}/${repo_name}.git"
 popd
 
 build_base_dir="/ramdisk/Build/${repo_name}"

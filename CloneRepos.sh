@@ -17,6 +17,7 @@ pushd "${HOME}/Program"
 
 for repo in  \
         DocViewTemplate     \
+        HouseholdAccounts   \
 ; do
     /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" "${repo}"
 done
@@ -25,6 +26,14 @@ done
 
 for repo in  \
         CI-Sample1          \
+        CalcOdsWriter       \
+        Csv2ColorOds        \
+        InitCMake           \
+        InitM4              \
+        PedometerCalc       \
+        Picross             \
+        Score4              \
+        ToyCode             \
 ; do
     /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" '-' "${repo}"
 done
