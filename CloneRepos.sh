@@ -18,6 +18,7 @@ pushd "${HOME}/Program"
 for repo in  \
         DocViewTemplate     \
         HouseholdAccounts   \
+        Score4              \
 ; do
     /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" "${repo}"
 done
@@ -32,7 +33,6 @@ for repo in  \
         InitM4              \
         PedometerCalc       \
         Picross             \
-        Score4              \
         ToyCode             \
 ; do
     /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" '-' "${repo}"
