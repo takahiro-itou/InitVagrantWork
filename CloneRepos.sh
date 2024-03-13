@@ -20,7 +20,8 @@ for repo in  \
         HouseholdAccounts   \
         Score4              \
 ; do
-    /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" "${repo}"
+    /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" "${repo}"  \
+    ||  echo  "SKIP: HG Repo ${repo} already exists"  1>&2
 done
 
 ##  Only GIT Repository
@@ -35,7 +36,8 @@ for repo in  \
         Picross             \
         ToyCode             \
 ; do
-    /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" '-' "${repo}"
+    /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" '-' "${repo}"  \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 done
 
 popd

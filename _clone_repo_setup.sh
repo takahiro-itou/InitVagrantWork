@@ -10,6 +10,10 @@ bitbucket_url_base="git@bitbucket.org:takahiro_itou"
 
 if [[ "X${hg_repo_name}Y" != 'X-Y' ]] ; then
     repo_name="${hg_repo_name}"
+    if [[ -d "${repo_name}" ]] ; then
+        exit  2
+    fi
+
     hg clone "ssh://hgvagrant/${repo_name}"
     git init "${repo_name}"
     pushd    "${repo_name}"
@@ -17,6 +21,10 @@ if [[ "X${hg_repo_name}Y" != 'X-Y' ]] ; then
     popd
 elif [[ "X${git_repo_name}Y" != 'X-Y' ]] ; then
     repo_name="${git_repo_name}"
+    if [[ -d "${repo_name}" ]] ; then
+        exit  2
+    fi
+
     git_url="${gitlab_url_base}/${repo_name}.git"
     git clone --recursive "${git_url}"
 else
