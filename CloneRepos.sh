@@ -14,7 +14,7 @@ for repo in  \
         Score4              \
 ; do
     /bin/bash -xue  \
-            "${script_dir}/helpers/_clone_repo_setup.sh" "${repo}"  \
+            "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
     ||  echo  "SKIP: HG Repo ${repo} already exists"  1>&2
 done
 
@@ -31,7 +31,7 @@ for repo in  \
         ToyCode             \
 ; do
     /bin/bash -xue  \
-            "${script_dir}/helpers/_clone_repo_setup.sh" '-' "${repo}"  \
+            "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 done
 
