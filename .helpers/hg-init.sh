@@ -22,6 +22,9 @@ for dir in  \
         Settings            \
         gnupg               \
 ; do
+    if [[ -d "${dir}/.hg" ]] ; then
+        continue
+    fi
     hg init "${dir}"
 done
 
