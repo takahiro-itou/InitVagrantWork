@@ -14,7 +14,7 @@ if [[ "X${hg_repo_name}Y" != 'X-Y' ]] ; then
         exit  2
     fi
 
-    hg clone "ssh://hgvagrant/${repo_name}"
+    hg clone "ssh://hgvagrant/repos/${repo_name}"
     git init "${repo_name}"
     pushd    "${repo_name}"
     git remote add origin "${gitlab_url_base}/${repo_name}.git"

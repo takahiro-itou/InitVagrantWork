@@ -2,15 +2,8 @@
 
 script_dir=$(readlink -f "$(dirname "$0")")
 
-pushd "${HOME}"
-if [[ ! -e Program ]] ; then
-    if [[ -d '/ext-hdd/data' ]] ; then
-        mkdir -p "/ext-hdd/data/Program"
-        ln -s    "/ext-hdd/data/Program"
-    else
-        mkdir -p Program
-    fi
-fi
+/bin/bash -xue "${script_dir}/setup-directory.sh"
+
 pushd "${HOME}/Program"
 
 ##  Both HG and GIT Repository
@@ -20,7 +13,8 @@ for repo in  \
         HouseholdAccounts   \
         Score4              \
 ; do
-    /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" "${repo}"  \
+    /bin/bash -xue  \
+            "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
     ||  echo  "SKIP: HG Repo ${repo} already exists"  1>&2
 done
 
@@ -36,7 +30,8 @@ for repo in  \
         Picross             \
         ToyCode             \
 ; do
-    /bin/bash -xue "${script_dir}/_clone_repo_setup.sh" '-' "${repo}"  \
+    /bin/bash -xue  \
+            "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 done
 
