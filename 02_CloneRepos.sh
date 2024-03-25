@@ -37,7 +37,7 @@ done
 
 ##  Vagrant Projects
 
-vagrant_url_base='git@gitlab.com:takahiro-itou-vagrant/'
+vagrant_url_base='git@gitlab.com:takahiro-itou-vagrant'
 
 mkdir -p Vagrant
 pushd    Vagrant
@@ -54,7 +54,7 @@ for repo in  \
         continue
     fi
     pushd  "${repo}"
-    git remote add bit "${vagrant_url_base}/${repo}.git"
+    git remote add bit "${vagrant_url_base}/${repo##vagrant-}.git"
     popd
 done
 
