@@ -3,6 +3,7 @@
 hg_repo_name=$1
 git_repo_name=${2-'-'}
 git_repo_grp=${3:-''}
+mkdir_build=${4:-'yes'}
 
 gitlab_url_base='git@gitlab.com:takahiro-itou'
 github_url_base='git@github.com:takahiro-itou'
@@ -41,17 +42,24 @@ git remote add github "${github_url_base}/${repo_name}.git"
 # git remote add bit "${bitbucket_url_base}/${repo_name}.git"
 popd
 
-build_base_dir="/ramdisk/Build/${repo_name}"
-mkdir -p  "${build_base_dir}"
-pushd     "${build_base_dir}"
-mkdir -p  \
-      AutoMake/Debug-WithCppUnit    \
-      AutoMake/Release-WithCppUnit  \
-      AutoMake/Debug-NoCppUnit      \
-      AutoMake/Releaes-NoCppUnit    \
-      CMake/Debug-WithCppUnit       \
-      CMake/Release-WithCppUnit     \
-      CMake/Debug-NoCppUnit         \
-      CMake/Release-NoCppUnit       \
-      ;
+##  ビルド用ディレクトリも生成する
+
+if [[ "X${mkdir_build}Y" != 'XnoY' ]] ; then
+
+    build_base_dir="/ramdisk/Build/${repo_name}"
+    mkdir -p  "${build_base_dir}"
+    pushd     "${build_base_dir}"
+    mkdir -p  \
+        AutoMake/Debug-WithCppUnit      \
+        AutoMake/Release-WithCppUnit    \
+        AutoMake/Debug-NoCppUnit        \
+        AutoMake/Releaes-NoCppUnit      \
+        CMake/Debug-WithCppUnit         \
+        CMake/Release-WithCppUnit       \
+        CMake/Debug-NoCppUnit           \
+        CMake/Release-NoCppUnit         \
+    ;
+
+fi
+
 popd
