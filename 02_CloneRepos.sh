@@ -12,6 +12,7 @@ for repo in  \
         DocViewTemplate     \
         HouseholdAccounts   \
         Score4              \
+        Settings            \
 ; do
     /bin/bash -xue  \
             "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
