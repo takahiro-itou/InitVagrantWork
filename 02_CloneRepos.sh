@@ -46,6 +46,10 @@ pushd    Vagrant
 for repo in  \
         vagrant-ubuntu-develop  \
         vagrant-ubuntu-docker  \
+        vagrant-box-rocky-develop  \
+        vagrant-box-rocky-pbspro   \
+        vagrant-rocky-develop  \
+        vagrant-rocky-pbspro   \
 ; do
     if ! /bin/bash -xue  \
             "${script_dir}/.helpers/clone-repo-setup.sh"    \
