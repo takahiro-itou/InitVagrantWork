@@ -53,7 +53,7 @@ if [[ "X${mkdir_build}Y" != 'XnoY' ]] ; then
         AutoMake/Debug-WithCppUnit      \
         AutoMake/Release-WithCppUnit    \
         AutoMake/Debug-NoCppUnit        \
-        AutoMake/Releaes-NoCppUnit      \
+        AutoMake/Release-NoCppUnit      \
         CMake/Debug-WithCppUnit         \
         CMake/Release-WithCppUnit       \
         CMake/Debug-NoCppUnit           \
