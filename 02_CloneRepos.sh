@@ -15,8 +15,12 @@ for repo in  \
         Settings            \
 ; do
     /bin/bash -xue  \
-            "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
     ||  echo  "SKIP: HG Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make_build_dirs" "${repo}"  \
+    ;
 done
 
 ##  Only GIT Repository
@@ -32,8 +36,12 @@ for repo in  \
         ToyCode             \
 ; do
     /bin/bash -xue  \
-            "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make_build_dirs" "${repo}"  \
+    ;
 done
 
 ##  Vagrant Projects
