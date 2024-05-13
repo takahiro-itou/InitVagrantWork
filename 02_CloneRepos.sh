@@ -19,7 +19,7 @@ for repo in  \
     ||  echo  "SKIP: HG Repo ${repo} already exists"  1>&2
 
     /bin/bash -xue  \
-        "${script_dir}/.helpers/make_build_dirs" "${repo}"  \
+        "${script_dir}/.helpers/make_build_dirs.sh" "${repo}"  \
     ;
 done
 
@@ -40,7 +40,7 @@ for repo in  \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 
     /bin/bash -xue  \
-        "${script_dir}/.helpers/make_build_dirs" "${repo}"  \
+        "${script_dir}/.helpers/make_build_dirs.sh" "${repo}"  \
     ;
 done
 
