@@ -45,6 +45,31 @@ for repo in  \
     ;
 done
 
+##  DTV Projects
+
+mkdir -p DTV
+pushd    DTV
+
+for repo in  \
+        TsSplitterView  \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
+
+for repo in  \
+        TsSplitter  \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
+done
+
+popd
+
+##  GBA Projects
+
 ##  Vagrant Projects
 
 vagrant_url_base='git@gitlab.com:takahiro-itou-vagrant'
@@ -73,5 +98,7 @@ for repo in  \
 done
 
 popd
+
+##  Done
 
 popd
