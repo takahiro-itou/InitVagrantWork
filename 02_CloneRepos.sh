@@ -70,6 +70,39 @@ popd
 
 ##  GBA Projects
 
+mkdir -p GBA
+pushd    GBA
+
+for repo in  \
+        DisAsm          \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
+done
+
+for repo in  \
+        DebuggerView    \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
+
+for repo in  \
+        GbDebugger      \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
+done
+
+popd
+
 ##  Vagrant Projects
 
 vagrant_url_base='git@gitlab.com:takahiro-itou-vagrant'
