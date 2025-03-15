@@ -15,8 +15,12 @@ for repo in  \
         Settings            \
 ; do
     /bin/bash -xue  \
-            "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
     ||  echo  "SKIP: HG Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
 done
 
 ##  Only GIT Repository
@@ -25,6 +29,7 @@ for repo in  \
         CI-Sample1          \
         CalcOdsWriter       \
         Csv2ColorOds        \
+        Hashes              \
         InitCMake           \
         InitM4              \
         PedometerCalc       \
@@ -32,9 +37,71 @@ for repo in  \
         ToyCode             \
 ; do
     /bin/bash -xue  \
-            "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
+done
+
+##  DTV Projects
+
+mkdir -p DTV
+pushd    DTV
+
+for repo in  \
+        TsSplitterView  \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 done
+
+for repo in  \
+        TsSplitter  \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
+done
+
+popd
+
+##  GBA Projects
+
+mkdir -p GBA
+pushd    GBA
+
+for repo in  \
+        DisAsm          \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
+done
+
+for repo in  \
+        DebuggerView    \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
+
+for repo in  \
+        GbDebugger      \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
+done
+
+popd
 
 ##  Vagrant Projects
 
@@ -64,5 +131,7 @@ for repo in  \
 done
 
 popd
+
+##  Done
 
 popd
