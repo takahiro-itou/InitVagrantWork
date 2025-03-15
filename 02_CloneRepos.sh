@@ -29,6 +29,7 @@ for repo in  \
         CI-Sample1          \
         CalcOdsWriter       \
         Csv2ColorOds        \
+        Hashes              \
         InitCMake           \
         InitM4              \
         PedometerCalc       \
