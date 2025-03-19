@@ -42,4 +42,3 @@ git remote add github "${github_url_base}/${repo_name}.git"
 # git remote add bit "${bitbucket_url_base}/${repo_name}.git"
 popd
 
-popd
