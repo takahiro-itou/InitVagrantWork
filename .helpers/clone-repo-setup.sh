@@ -5,7 +5,7 @@ git_repo_name=${2-'-'}
 git_repo_grp=${3:-''}
 mkdir_build=${4:-'yes'}
 
-gitlab_url_base='git@gitlab.com:takahiro-itou'
+gitlab_url_base=${5:-'git@gitlab.com:takahiro-itou'}
 github_url_base='git@github.com:takahiro-itou'
 bitbucket_url_base="git@bitbucket.org:takahiro_itou"
 
@@ -41,4 +41,3 @@ pushd "${repo_name}"
 git remote add github "${github_url_base}/${repo_name}.git"
 # git remote add bit "${bitbucket_url_base}/${repo_name}.git"
 popd
-
