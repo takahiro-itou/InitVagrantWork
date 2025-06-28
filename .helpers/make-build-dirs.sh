@@ -20,7 +20,6 @@ if [[ "X${mkdir_build}Y" != 'XnoY' ]] ; then
         CMake/Debug-NoCppUnit           \
         CMake/Release-NoCppUnit         \
     ;
+    popd
 
 fi
-
-popd
