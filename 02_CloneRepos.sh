@@ -45,6 +45,30 @@ for repo in  \
     ;
 done
 
+##  Template Projects
+
+mkdir -p Template
+pushd    Template
+
+for repo in  \
+        CppUnitDriver       \
+        DocViewTemplate     \
+        FrontEndTemplate    \
+        LibraryTemplate     \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh"  \
+        '-'  "${repo}"  'templates'  'yes'            \
+        'git@gitlab.com:takahiro-itou-templates'      \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
+done
+
+popd
+
 ##  DTV Projects
 
 mkdir -p DTV
