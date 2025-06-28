@@ -61,6 +61,10 @@ for repo in  \
         '-'  "${repo}"  'templates'  'yes'            \
         'git@gitlab.com:takahiro-itou-templates'      \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    ;
 done
 
 popd
