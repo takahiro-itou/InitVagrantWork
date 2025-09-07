@@ -55,6 +55,7 @@ for repo in  \
         DocViewTemplate     \
         FrontEndTemplate    \
         LibraryTemplate     \
+        GraphicsTemplate    \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh"  \
