@@ -157,6 +157,21 @@ done
 
 popd
 
+##  Blog/Pages Projects
+
+mkdir -p Pages
+pushd    Pages
+
+for repo in  \
+        BlogProjects  GithubPages-Test  \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
+
+popd
+
 ##  Done
 
 popd
