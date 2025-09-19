@@ -35,6 +35,7 @@ for repo in  \
         PedometerCalc       \
         Picross             \
         ToyCode             \
+        WpfTest             \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
