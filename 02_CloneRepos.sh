@@ -171,6 +171,17 @@ for repo in  \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 done
 
+for repo in  \
+        PagesTemplate  \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh"  \
+        '-'  "${repo}"  'templates'  'no'             \
+        'git@gitlab.com:takahiro-itou-templates'      \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
+
+
 popd
 
 ##  Done
