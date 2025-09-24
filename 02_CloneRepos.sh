@@ -35,6 +35,7 @@ for repo in  \
         PedometerCalc       \
         Picross             \
         ToyCode             \
+        WpfTest             \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
@@ -55,6 +56,7 @@ for repo in  \
         DocViewTemplate     \
         FrontEndTemplate    \
         LibraryTemplate     \
+        GraphicsTemplate    \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh"  \
@@ -153,6 +155,32 @@ for repo in  \
     git remote add bit "${vagrant_url_base}/${repo##vagrant-}.git"
     popd
 done
+
+popd
+
+##  Blog/Pages Projects
+
+mkdir -p Pages
+pushd    Pages
+
+for repo in  \
+        BlogProjects  GithubPages-Test  \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
+
+for repo in  \
+        PagesTemplate  \
+; do
+    /bin/bash -xue  \
+        "${script_dir}/.helpers/clone-repo-setup.sh"  \
+        '-'  "${repo}"  'templates'  'no'             \
+        'git@gitlab.com:takahiro-itou-templates'      \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
+
 
 popd
 
