@@ -34,6 +34,7 @@ for repo in  \
         InitM4              \
         PedometerCalc       \
         Picross             \
+        ScreenCaptureWithTimer  \
         ToyCode             \
         WpfTest             \
 ; do
