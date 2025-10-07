@@ -183,8 +183,33 @@ for repo in  \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 done
 
+popd
+
+
+##  Installer Projects
+
+mkdir -p Installer
+pushd    Installer
+
+for repo in  \
+        $(cat "${script_dir}/clone.d/Installer")  \
+; do
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='no'
+
+    /bin/bash -xue  \
+    "${script_dir}/.helpers/clone-repo-setup.sh"    \
+        "${hg_repo_name}"   \
+        "${git_repo_name}"  \
+        "${git_repo_grp}"   \
+        "$mkdir_build}"     \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
 
 popd
+
 
 ##  Done
 
