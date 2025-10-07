@@ -26,17 +26,18 @@ done
 ##  Only GIT Repository
 
 for repo in  \
-        CI-Sample1          \
-        CalcOdsWriter       \
-        Csv2ColorOds        \
-        Hashes              \
-        InitCMake           \
-        InitM4              \
-        PedometerCalc       \
-        Picross             \
+        CI-Sample1              \
+        CalcOdsWriter           \
+        Csv2ColorOds            \
+        Hashes                  \
+        InitCMake               \
+        InitM4                  \
+        PedometerCalc           \
+        PbsTools-Ubuntu         \
+        Picross                 \
         ScreenCaptureWithTimer  \
-        ToyCode             \
-        WpfTest             \
+        ToyCode                 \
+        WpfTest                 \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
