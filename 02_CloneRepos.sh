@@ -26,16 +26,18 @@ done
 ##  Only GIT Repository
 
 for repo in  \
-        CI-Sample1          \
-        CalcOdsWriter       \
-        Csv2ColorOds        \
-        Hashes              \
-        InitCMake           \
-        InitM4              \
-        PedometerCalc       \
-        Picross             \
-        ToyCode             \
-        WpfTest             \
+        CI-Sample1              \
+        CalcOdsWriter           \
+        Csv2ColorOds            \
+        Hashes                  \
+        InitCMake               \
+        InitM4                  \
+        PedometerCalc           \
+        PbsTools-Ubuntu         \
+        Picross                 \
+        ScreenCaptureWithTimer  \
+        ToyCode                 \
+        WpfTest                 \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
@@ -181,8 +183,35 @@ for repo in  \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 done
 
+popd
+
+
+##  Installer Projects
+
+mkdir -p Installer
+pushd    Installer
+
+for repo in  \
+        $(cat "${script_dir}/clone.d/Installer")  \
+; do
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='no'
+    gitlab_url_base='git@gitlab.com:takahiro-itou'
+
+    /bin/bash -xue  \
+    "${script_dir}/.helpers/clone-repo-setup.sh"    \
+        "${hg_repo_name}"       \
+        "${git_repo_name}"      \
+        "${git_repo_grp}"       \
+        "${mkdir_build}"        \
+        "${gitlab_url_base}"    \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
 
 popd
+
 
 ##  Done
 
