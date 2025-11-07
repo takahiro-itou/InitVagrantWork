@@ -213,6 +213,33 @@ done
 popd
 
 
+##  WebService Projects
+
+mkdir -p WebService
+pushd    WebService
+
+for repo in  \
+        $(cat "${script_dir}/clone.d/WebService")  \
+; do
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='no'
+    gitlab_url_base='git@gitlab.com:takahiro-itou-webservice'
+
+    /bin/bash -xue  \
+    "${script_dir}/.helpers/clone-repo-setup.sh"    \
+        "${hg_repo_name}"       \
+        "${git_repo_name}"      \
+        "${git_repo_grp}"       \
+        "${mkdir_build}"        \
+        "${gitlab_url_base}"    \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
+
+popd
+
+
 ##  Done
 
 popd
