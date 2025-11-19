@@ -26,26 +26,27 @@ done
 ##  Only GIT Repository
 
 for repo in  \
-        BowlingScore            \
-        CI-Sample1              \
-        CalcOdsWriter           \
-        Csv2ColorOds            \
-        Hashes                  \
-        InitCMake               \
-        InitM4                  \
-        PedometerCalc           \
-        PbsTools-Ubuntu         \
-        Picross                 \
-        ScreenCaptureWithTimer  \
-        ToyCode                 \
-        WpfTest                 \
+        $(cat "${script_dir}/clone.d/Defaults")  \
 ; do
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='yes'
+    gitlab_url_base='git@gitlab.com:takahiro-itou'
+
     /bin/bash -xue  \
-        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    "${script_dir}/.helpers/clone-repo-setup.sh"    \
+        "${hg_repo_name}"       \
+        "${git_repo_name}"      \
+        "${git_repo_grp}"       \
+        "${mkdir_build}"        \
+        "${gitlab_url_base}"    \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 
     /bin/bash -xue  \
-        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    "${script_dir}/.helpers/make-build-dirs.sh"     \
+        "${repo}"               \
+        "${mkdir_build}"        \
     ;
 done
 
