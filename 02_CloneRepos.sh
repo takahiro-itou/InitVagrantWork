@@ -1,4 +1,6 @@
-#!/bin/bash  -xue
+#!/bin/bash
+
+set  -ue
 
 script_dir=$(readlink -f "$(dirname "$0")")
 
