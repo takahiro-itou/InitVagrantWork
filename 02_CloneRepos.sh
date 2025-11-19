@@ -140,16 +140,21 @@ mkdir -p Vagrant
 pushd    Vagrant
 
 for repo in  \
-        vagrant-ubuntu-develop  \
-        vagrant-ubuntu-docker  \
-        vagrant-box-rocky-develop  \
-        vagrant-box-rocky-pbspro   \
-        vagrant-rocky-develop  \
-        vagrant-rocky-pbspro   \
+        $(cat "${script_dir}/clone.d/Vagrant")  \
 ; do
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='no'
+    gitlab_url_base='git@gitlab.com:takahiro-itou'
+
     if ! /bin/bash -xue  \
             "${script_dir}/.helpers/clone-repo-setup.sh"    \
-            '-' "${repo}" 'no'  \
+                "${hg_repo_name}"       \
+                "${git_repo_name}"      \
+                "${git_repo_grp}"       \
+                "${mkdir_build}"        \
+                "${gitlab_url_base}"    \
     ; then
         echo  "SKIP: Git Repo ${repo} already exists"  1>&2
         continue
