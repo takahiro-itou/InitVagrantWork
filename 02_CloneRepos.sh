@@ -26,6 +26,7 @@ done
 ##  Only GIT Repository
 
 for repo in  \
+        BowlingScore            \
         CI-Sample1              \
         CalcOdsWriter           \
         Csv2ColorOds            \
