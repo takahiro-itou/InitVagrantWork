@@ -175,7 +175,7 @@ mkdir -p Pages
 pushd    Pages
 
 for repo in  \
-        BlogProjects  GithubPages-Test  \
+        $(cat "${script_dir}/clone.d/Pages")  \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
