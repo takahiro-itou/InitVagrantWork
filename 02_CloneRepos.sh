@@ -11,10 +11,7 @@ pushd "${HOME}/Program"
 ##  Both HG and GIT Repository
 
 for repo in  \
-        DocViewTemplate     \
-        HouseholdAccounts   \
-        Score4              \
-        Settings            \
+        $(cat "${script_dir}/clone.d/BothHgGit")  \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
