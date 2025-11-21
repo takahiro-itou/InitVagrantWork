@@ -1,4 +1,6 @@
-#!/bin/bash  -xue
+#!/bin/bash
+
+set  -ue
 
 script_dir=$(readlink -f "$(dirname "$0")")
 
@@ -9,10 +11,7 @@ pushd "${HOME}/Program"
 ##  Both HG and GIT Repository
 
 for repo in  \
-        DocViewTemplate     \
-        HouseholdAccounts   \
-        Score4              \
-        Settings            \
+        $(cat "${script_dir}/clone.d/BothHgGit")  \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
@@ -26,25 +25,27 @@ done
 ##  Only GIT Repository
 
 for repo in  \
-        CI-Sample1              \
-        CalcOdsWriter           \
-        Csv2ColorOds            \
-        Hashes                  \
-        InitCMake               \
-        InitM4                  \
-        PedometerCalc           \
-        PbsTools-Ubuntu         \
-        Picross                 \
-        ScreenCaptureWithTimer  \
-        ToyCode                 \
-        WpfTest                 \
+        $(cat "${script_dir}/clone.d/Defaults")  \
 ; do
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='yes'
+    gitlab_url_base='git@gitlab.com:takahiro-itou'
+
     /bin/bash -xue  \
-        "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
+    "${script_dir}/.helpers/clone-repo-setup.sh"    \
+        "${hg_repo_name}"       \
+        "${git_repo_name}"      \
+        "${git_repo_grp}"       \
+        "${mkdir_build}"        \
+        "${gitlab_url_base}"    \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 
     /bin/bash -xue  \
-        "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
+    "${script_dir}/.helpers/make-build-dirs.sh"     \
+        "${repo}"               \
+        "${mkdir_build}"        \
     ;
 done
 
@@ -139,16 +140,21 @@ mkdir -p Vagrant
 pushd    Vagrant
 
 for repo in  \
-        vagrant-ubuntu-develop  \
-        vagrant-ubuntu-docker  \
-        vagrant-box-rocky-develop  \
-        vagrant-box-rocky-pbspro   \
-        vagrant-rocky-develop  \
-        vagrant-rocky-pbspro   \
+        $(cat "${script_dir}/clone.d/Vagrant")  \
 ; do
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='no'
+    gitlab_url_base='git@gitlab.com:takahiro-itou'
+
     if ! /bin/bash -xue  \
             "${script_dir}/.helpers/clone-repo-setup.sh"    \
-            '-' "${repo}" 'no'  \
+                "${hg_repo_name}"       \
+                "${git_repo_name}"      \
+                "${git_repo_grp}"       \
+                "${mkdir_build}"        \
+                "${gitlab_url_base}"    \
     ; then
         echo  "SKIP: Git Repo ${repo} already exists"  1>&2
         continue
@@ -166,7 +172,7 @@ mkdir -p Pages
 pushd    Pages
 
 for repo in  \
-        BlogProjects  GithubPages-Test  \
+        $(cat "${script_dir}/clone.d/Pages")  \
 ; do
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" '-' "${repo}"  \
@@ -199,6 +205,33 @@ for repo in  \
     git_repo_grp=''
     mkdir_build='no'
     gitlab_url_base='git@gitlab.com:takahiro-itou'
+
+    /bin/bash -xue  \
+    "${script_dir}/.helpers/clone-repo-setup.sh"    \
+        "${hg_repo_name}"       \
+        "${git_repo_name}"      \
+        "${git_repo_grp}"       \
+        "${mkdir_build}"        \
+        "${gitlab_url_base}"    \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+done
+
+popd
+
+
+##  WebService Projects
+
+mkdir -p WebService
+pushd    WebService
+
+for repo in  \
+        $(cat "${script_dir}/clone.d/WebService")  \
+; do
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='no'
+    gitlab_url_base='git@gitlab.com:takahiro-itou-webservice'
 
     /bin/bash -xue  \
     "${script_dir}/.helpers/clone-repo-setup.sh"    \
