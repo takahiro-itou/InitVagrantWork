@@ -20,10 +20,10 @@ pushd  /home/hg/repos
 for repo in  \
         $(cat "${script_dir}/hgrepos.ls")  \
 ; do
-    if [[ -d "${dir}/.hg" ]] ; then
+    if [[ -d "${repo}/.hg" ]] ; then
         continue
     fi
-    hg init "${dir}"
+    hg init "${repo}"
 done
 
 popd
