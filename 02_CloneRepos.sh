@@ -8,6 +8,7 @@ script_dir=$(readlink -f "$(dirname "$0")")
 
 pushd "${HOME}/Program"
 
+##----------------------------------------------------------------
 ##  Both HG and GIT Repository
 
 for repo in  \
@@ -22,6 +23,8 @@ for repo in  \
     ;
 done
 
+
+##----------------------------------------------------------------
 ##  Only GIT Repository
 
 for repo in  \
@@ -49,6 +52,44 @@ for repo in  \
     ;
 done
 
+
+##----------------------------------------------------------------
+##  HgGit Project
+
+for entry in  \
+        $(cat "${script_dir}/clone.d/HgGit")  \
+; do
+    trg_dir=$(dirname "${entry}")
+    repo=$(basename "${entry}")
+
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='no'
+    gitlab_url_base='git@gitlab.com:takahiro-itou-hggit'
+
+    pushd  "${trg_dir}"
+
+    /bin/bash -xue  \
+    "${script_dir}/.helpers/clone-repo-setup.sh"    \
+        "${hg_repo_name}"       \
+        "${git_repo_name}"      \
+        "${git_repo_grp}"       \
+        "${mkdir_build}"        \
+        "${gitlab_url_base}"    \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+    "${script_dir}/.helpers/make-build-dirs.sh"     \
+        "${repo}"               \
+        "${mkdir_build}"        \
+    ;
+
+    popd
+done
+
+
+##----------------------------------------------------------------
 ##  Template Projects
 
 mkdir -p Template
@@ -74,6 +115,8 @@ done
 
 popd
 
+
+##----------------------------------------------------------------
 ##  DTV Projects
 
 mkdir -p DTV
@@ -97,6 +140,8 @@ done
 
 popd
 
+
+##----------------------------------------------------------------
 ##  GBA Projects
 
 mkdir -p GBA
@@ -132,6 +177,8 @@ done
 
 popd
 
+
+##----------------------------------------------------------------
 ##  Vagrant Projects
 
 vagrant_url_base='git@gitlab.com:takahiro-itou-vagrant'
@@ -166,6 +213,8 @@ done
 
 popd
 
+
+##----------------------------------------------------------------
 ##  Blog/Pages Projects
 
 mkdir -p Pages
@@ -192,6 +241,7 @@ done
 popd
 
 
+##----------------------------------------------------------------
 ##  Installer Projects
 
 mkdir -p Installer
@@ -219,6 +269,7 @@ done
 popd
 
 
+##----------------------------------------------------------------
 ##  WebService Projects
 
 mkdir -p WebService
@@ -246,6 +297,7 @@ done
 popd
 
 
+##----------------------------------------------------------------
 ##  Done
 
 popd
