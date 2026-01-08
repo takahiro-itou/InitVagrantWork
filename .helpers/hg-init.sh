@@ -17,7 +17,9 @@ pushd  /home/hg/repos
 for dir in  \
         DocViewTemplate     \
         FileTransWork       \
+        GitModuleTest       \
         HouseholdAccounts   \
+        LibraryTemplate     \
         Score4              \
         Settings            \
         gnupg               \
@@ -26,6 +28,7 @@ for dir in  \
         continue
     fi
     hg init "${dir}"
+    hg init "Unconv-${dir}"
 done
 
 popd
