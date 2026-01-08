@@ -1,0 +1,13 @@
+DocViewTemplate
+FileTransWork
+GitModuleTest
+HouseholdAccounts
+LibraryTemplate
+Score4
+Settings
+Unconv-DocViewTemplate
+Unconv-HouseholdAccounts
+Unconv-LibraryTemplate
+Unconv-Score4
+Unconv-Settings
+gnupg
