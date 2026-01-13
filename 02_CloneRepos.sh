@@ -32,16 +32,21 @@ done
 
 
 ##----------------------------------------------------------------
-##  Only GIT Repository
+##    Only GIT Repository
 
-for repo in  \
+for entry in  \
         $(cat "${script_dir}/clone.d/Defaults")  \
 ; do
+    trg_dir=$(dirname "${entry}")
+    repo=$(basename "${entry}")
+
     hg_repo_name='-'
     git_repo_name="${repo}"
     git_repo_grp=''
     mkdir_build='yes'
     gitlab_url_base='git@gitlab.com:takahiro-itou'
+
+    pushd  "${trg_dir}"  1>&2
 
     /bin/bash -xue  \
     "${script_dir}/.helpers/clone-repo-setup.sh"    \
@@ -57,6 +62,8 @@ for repo in  \
         "${repo}"               \
         "${mkdir_build}"        \
     ;
+
+    popd  1>&2
 done
 
 
