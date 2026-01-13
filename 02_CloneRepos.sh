@@ -9,11 +9,16 @@ script_dir=$(readlink -f "$(dirname "$0")")
 pushd "${HOME}/Program"
 
 ##----------------------------------------------------------------
-##  Both HG and GIT Repository
+##    Both HG and GIT Repository
 
-for repo in  \
+for entry in  \
         $(cat "${script_dir}/clone.d/BothHgGit")  \
 ; do
+    trg_dir=$(dirname "${entry}")
+    repo=$(basename "${entry}")
+
+    pushd  "${trg_dir}"  1>&2
+
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
     ||  echo  "SKIP: HG Repo ${repo} already exists"  1>&2
@@ -21,6 +26,8 @@ for repo in  \
     /bin/bash -xue  \
         "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
     ;
+
+    popd  1>&2
 done
 
 
@@ -54,7 +61,7 @@ done
 
 
 ##----------------------------------------------------------------
-##  HgGit Project
+##    HgGit Project
 
 for entry in  \
         $(cat "${script_dir}/clone.d/HgGit")  \
@@ -68,7 +75,7 @@ for entry in  \
     mkdir_build='no'
     gitlab_url_base='git@gitlab.com:takahiro-itou-hggit'
 
-    pushd  "${trg_dir}"
+    pushd  "${trg_dir}"  1>&2
 
     /bin/bash -xue  \
     "${script_dir}/.helpers/clone-repo-setup.sh"    \
@@ -85,7 +92,7 @@ for entry in  \
         "${mkdir_build}"        \
     ;
 
-    popd
+    popd  1>&2
 done
 
 
