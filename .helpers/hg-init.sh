@@ -1,3 +1,6 @@
+#!/bin/bash
+
+script_dir=$(readlink -f "$(dirname "$0")")
 
 pushd  /home/hg
 
@@ -14,18 +17,13 @@ popd
 
 pushd  /home/hg/repos
 
-for dir in  \
-        DocViewTemplate     \
-        FileTransWork       \
-        HouseholdAccounts   \
-        Score4              \
-        Settings            \
-        gnupg               \
+for repo in  \
+        $(cat "${script_dir}/hgrepos.ls")  \
 ; do
-    if [[ -d "${dir}/.hg" ]] ; then
+    if [[ -d "${repo}/.hg" ]] ; then
         continue
     fi
-    hg init "${dir}"
+    hg init "${repo}"
 done
 
 popd

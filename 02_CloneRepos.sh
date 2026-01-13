@@ -8,11 +8,17 @@ script_dir=$(readlink -f "$(dirname "$0")")
 
 pushd "${HOME}/Program"
 
-##  Both HG and GIT Repository
+##----------------------------------------------------------------
+##    Both HG and GIT Repository
 
-for repo in  \
+for entry in  \
         $(cat "${script_dir}/clone.d/BothHgGit")  \
 ; do
+    trg_dir=$(dirname "${entry}")
+    repo=$(basename "${entry}")
+
+    pushd  "${trg_dir}"  1>&2
+
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh" "${repo}"  \
     ||  echo  "SKIP: HG Repo ${repo} already exists"  1>&2
@@ -20,18 +26,27 @@ for repo in  \
     /bin/bash -xue  \
         "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
     ;
+
+    popd  1>&2
 done
 
-##  Only GIT Repository
 
-for repo in  \
+##----------------------------------------------------------------
+##    Only GIT Repository
+
+for entry in  \
         $(cat "${script_dir}/clone.d/Defaults")  \
 ; do
+    trg_dir=$(dirname "${entry}")
+    repo=$(basename "${entry}")
+
     hg_repo_name='-'
     git_repo_name="${repo}"
     git_repo_grp=''
     mkdir_build='yes'
     gitlab_url_base='git@gitlab.com:takahiro-itou'
+
+    pushd  "${trg_dir}"  1>&2
 
     /bin/bash -xue  \
     "${script_dir}/.helpers/clone-repo-setup.sh"    \
@@ -47,8 +62,48 @@ for repo in  \
         "${repo}"               \
         "${mkdir_build}"        \
     ;
+
+    popd  1>&2
 done
 
+
+##----------------------------------------------------------------
+##    HgGit Project
+
+for entry in  \
+        $(cat "${script_dir}/clone.d/HgGit")  \
+; do
+    trg_dir=$(dirname "${entry}")
+    repo=$(basename "${entry}")
+
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp=''
+    mkdir_build='no'
+    gitlab_url_base='git@gitlab.com:takahiro-itou-hggit'
+
+    pushd  "${trg_dir}"  1>&2
+
+    /bin/bash -xue  \
+    "${script_dir}/.helpers/clone-repo-setup.sh"    \
+        "${hg_repo_name}"       \
+        "${git_repo_name}"      \
+        "${git_repo_grp}"       \
+        "${mkdir_build}"        \
+        "${gitlab_url_base}"    \
+    ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
+
+    /bin/bash -xue  \
+    "${script_dir}/.helpers/make-build-dirs.sh"     \
+        "${repo}"               \
+        "${mkdir_build}"        \
+    ;
+
+    popd  1>&2
+done
+
+
+##----------------------------------------------------------------
 ##  Template Projects
 
 mkdir -p Template
@@ -74,6 +129,8 @@ done
 
 popd
 
+
+##----------------------------------------------------------------
 ##  DTV Projects
 
 mkdir -p DTV
@@ -97,6 +154,8 @@ done
 
 popd
 
+
+##----------------------------------------------------------------
 ##  GBA Projects
 
 mkdir -p GBA
@@ -132,6 +191,8 @@ done
 
 popd
 
+
+##----------------------------------------------------------------
 ##  Vagrant Projects
 
 vagrant_url_base='git@gitlab.com:takahiro-itou-vagrant'
@@ -166,6 +227,8 @@ done
 
 popd
 
+
+##----------------------------------------------------------------
 ##  Blog/Pages Projects
 
 mkdir -p Pages
@@ -192,6 +255,7 @@ done
 popd
 
 
+##----------------------------------------------------------------
 ##  Installer Projects
 
 mkdir -p Installer
@@ -219,6 +283,7 @@ done
 popd
 
 
+##----------------------------------------------------------------
 ##  WebService Projects
 
 mkdir -p WebService
@@ -246,6 +311,7 @@ done
 popd
 
 
+##----------------------------------------------------------------
 ##  Done
 
 popd
