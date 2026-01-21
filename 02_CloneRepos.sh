@@ -46,7 +46,8 @@ for entry in  \
     mkdir_build='yes'
     gitlab_url_base='git@gitlab.com:takahiro-itou'
 
-    pushd  "${trg_dir}"  1>&2
+    mkdir -p "${trg_dir}"
+    pushd    "${trg_dir}"  1>&2
 
     /bin/bash -xue  \
     "${script_dir}/.helpers/clone-repo-setup.sh"    \
