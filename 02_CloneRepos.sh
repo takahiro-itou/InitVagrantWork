@@ -46,7 +46,8 @@ for entry in  \
     mkdir_build='yes'
     gitlab_url_base='git@gitlab.com:takahiro-itou'
 
-    pushd  "${trg_dir}"  1>&2
+    mkdir -p "${trg_dir}"
+    pushd    "${trg_dir}"  1>&2
 
     /bin/bash -xue  \
     "${script_dir}/.helpers/clone-repo-setup.sh"    \
@@ -82,7 +83,8 @@ for entry in  \
     mkdir_build='no'
     gitlab_url_base='git@gitlab.com:takahiro-itou-hggit'
 
-    pushd  "${trg_dir}"  1>&2
+    mkdir -p "${trg_dir}"
+    pushd    "${trg_dir}"  1>&2
 
     /bin/bash -xue  \
     "${script_dir}/.helpers/clone-repo-setup.sh"    \
@@ -104,18 +106,19 @@ done
 
 
 ##----------------------------------------------------------------
-##  Template Projects
+##    Template Projects
 
 mkdir -p Template
 pushd    Template
 
-for repo in  \
-        CppUnitDriver       \
-        DocViewTemplate     \
-        FrontEndTemplate    \
-        LibraryTemplate     \
-        GraphicsTemplate    \
+for entry in  \
+        $(cat "${script_dir}/clone.d/Template")  \
 ; do
+    trg_dir=$(dirname "${entry}")
+    repo=$(basename "${entry}")
+
+    pushd  "${trg_dir}"  1>&2
+
     /bin/bash -xue  \
         "${script_dir}/.helpers/clone-repo-setup.sh"  \
         '-'  "${repo}"  'templates'  'yes'            \
@@ -125,6 +128,8 @@ for repo in  \
     /bin/bash -xue  \
         "${script_dir}/.helpers/make-build-dirs.sh" "${repo}"  \
     ;
+
+    popd  1>&2
 done
 
 popd

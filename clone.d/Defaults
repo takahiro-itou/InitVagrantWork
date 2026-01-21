@@ -10,5 +10,7 @@ PbsTools-Ubuntu
 Picross
 SaveConverterLib
 ScreenCaptureWithTimer
+Tools/MyZlib
+Tools/RamDiskManager
 ToyCode
 WpfTest
