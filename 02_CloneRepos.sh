@@ -118,7 +118,13 @@ for entry in  \
     trg_dir=$(dirname "${repo_name}")
     repo=$(basename "${repo_name}")
 
-    hg_repo_name='-'
+    if [[ "${entry}" =~ : ]] ; then
+        hg_repo_name=${entry##*:}
+    fi
+    if [[ "${hg_repo_name}" = "hg" ]] ; then
+        hg_repo_name="${repo}"
+    fi
+
     git_repo_name="${repo}"
     git_repo_grp='templates'
     mkdir_build='yes'
