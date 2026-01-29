@@ -114,8 +114,16 @@ pushd    Template
 for entry in  \
         $(cat "${script_dir}/clone.d/Template")  \
 ; do
-    trg_dir=$(dirname "${entry}")
-    repo=$(basename "${entry}")
+    repo_type=${entry##*:}
+    repo_name=${entry%%:*}
+    trg_dir=$(dirname "${repo_name}")
+    repo=$(basename "${repo_name}")
+
+    hg_repo_name='-'
+    git_repo_name="${repo}"
+    git_repo_grp='templates'
+    mkdir_build='yes'
+    gitlab_url_base='git@gitlab.com:takahiro-itou-templates'
 
     pushd  "${trg_dir}"  1>&2
 
