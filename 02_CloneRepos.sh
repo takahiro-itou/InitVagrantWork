@@ -114,7 +114,6 @@ pushd    Template
 for entry in  \
         $(cat "${script_dir}/clone.d/Template")  \
 ; do
-    repo_type=${entry##*:}
     repo_name=${entry%%:*}
     trg_dir=$(dirname "${repo_name}")
     repo=$(basename "${repo_name}")
@@ -128,9 +127,12 @@ for entry in  \
     pushd  "${trg_dir}"  1>&2
 
     /bin/bash -xue  \
-        "${script_dir}/.helpers/clone-repo-setup.sh"  \
-        '-'  "${repo}"  'templates'  'yes'            \
-        'git@gitlab.com:takahiro-itou-templates'      \
+    "${script_dir}/.helpers/clone-repo-setup.sh"    \
+        "${hg_repo_name}"                           \
+        "${git_repo_name}"                          \
+        "${git_repo_grp}"                           \
+        "${mkdir_build}"                            \
+        "${gitlab_url_base}"                        \
     ||  echo  "SKIP: Git Repo ${repo} already exists"  1>&2
 
     /bin/bash -xue  \
